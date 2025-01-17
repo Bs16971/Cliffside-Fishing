@@ -28,10 +28,19 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""id"": ""e54dc883-aa32-4370-9d8b-3f6bf3d9cedb"",
             ""actions"": [
                 {
-                    ""name"": ""Move1"",
+                    ""name"": ""Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""1759a9a8-a516-4e5f-9501-30ab116b3644"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Button"",
+                    ""id"": ""0811b0f6-16db-48cb-8fb6-479e3f48e18b"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -45,7 +54,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move1"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -56,7 +65,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move1"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -67,7 +76,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move1"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -78,7 +87,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move1"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -89,9 +98,20 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move1"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02a8a07e-d977-4f58-a616-41eeae1a28f9"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -100,7 +120,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
 }");
         // Locomotion
         m_Locomotion = asset.FindActionMap("Locomotion", throwIfNotFound: true);
-        m_Locomotion_Move1 = m_Locomotion.FindAction("Move1", throwIfNotFound: true);
+        m_Locomotion_Move = m_Locomotion.FindAction("Move", throwIfNotFound: true);
+        m_Locomotion_Look = m_Locomotion.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,12 +183,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     // Locomotion
     private readonly InputActionMap m_Locomotion;
     private List<ILocomotionActions> m_LocomotionActionsCallbackInterfaces = new List<ILocomotionActions>();
-    private readonly InputAction m_Locomotion_Move1;
+    private readonly InputAction m_Locomotion_Move;
+    private readonly InputAction m_Locomotion_Look;
     public struct LocomotionActions
     {
         private @Controls m_Wrapper;
         public LocomotionActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move1 => m_Wrapper.m_Locomotion_Move1;
+        public InputAction @Move => m_Wrapper.m_Locomotion_Move;
+        public InputAction @Look => m_Wrapper.m_Locomotion_Look;
         public InputActionMap Get() { return m_Wrapper.m_Locomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -177,16 +200,22 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_LocomotionActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_LocomotionActionsCallbackInterfaces.Add(instance);
-            @Move1.started += instance.OnMove1;
-            @Move1.performed += instance.OnMove1;
-            @Move1.canceled += instance.OnMove1;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(ILocomotionActions instance)
         {
-            @Move1.started -= instance.OnMove1;
-            @Move1.performed -= instance.OnMove1;
-            @Move1.canceled -= instance.OnMove1;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(ILocomotionActions instance)
@@ -206,6 +235,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public LocomotionActions @Locomotion => new LocomotionActions(this);
     public interface ILocomotionActions
     {
-        void OnMove1(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }
