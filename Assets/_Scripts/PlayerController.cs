@@ -11,9 +11,7 @@ namespace _Scripts.Player
         private AnimationHandler _animationHandler;
 
         //camera location(transforms)
-
-        [SerializeField] private Transform camParent;
-        [SerializeField] private Transform cam;
+        
         [SerializeField] private float speed = 5f;
 
         [SerializeField] private float rotationSpeed = 10f;
@@ -35,15 +33,15 @@ namespace _Scripts.Player
 
         private void HandleMovement(float delta)
         {
-            Vector3 movDir = (_input.Move.x * camParent.right) + (_input.Move.y * camParent.forward);
+            Vector3 movDir = (_input.Move.x * transform.right) + (_input.Move.y * transform.forward);
             _controller.Move(movDir * speed * delta);
         }
 
         private void HandleRotation(float delta)
         {
             Vector3 targetDir;
-            targetDir = cam.forward * _input.Move.y;
-            targetDir += cam.right * _input.Move.x;
+            targetDir = transform.forward * _input.Move.y;
+            targetDir += transform.right * _input.Move.x;
             targetDir.Normalize();
 
             targetDir.y = 0;
