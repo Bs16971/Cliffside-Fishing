@@ -20,11 +20,9 @@ public class AnimationHandler : MonoBehaviour
         
     }
 
-    private void Update()
+    public void HandleCast(bool cast)
     {
-        if (Input.GetMouseButton(0))
-        {
-            _anim.SetTrigger("Cast");
-        }
+        _anim.applyRootMotion = cast;
+        _anim.SetBool("cast", cast);
     }
 }

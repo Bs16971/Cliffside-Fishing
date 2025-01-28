@@ -11,7 +11,6 @@ namespace _Scripts.Player
         private AnimationHandler _animationHandler;
 
         //camera location(transforms)
-        
         [SerializeField] private float speed = 5f;
 
         [SerializeField] private float rotationSpeed = 10f;
