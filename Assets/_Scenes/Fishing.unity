@@ -886,7 +886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099436247}
-  - component: {fileID: 1099436246}
+  - component: {fileID: 1099436248}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -894,18 +894,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1099436246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099436245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5683e61f323b0534a9aaf9b97634afad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1099436247
 Transform:
   m_ObjectHideFlags: 0
@@ -921,6 +909,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1099436248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099436245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5683e61f323b0534a9aaf9b97634afad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1233388207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,8 +1006,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1418062606}
   - component: {fileID: 1418062605}
+  - component: {fileID: 1418062607}
   - component: {fileID: 1418062603}
-  - component: {fileID: 1418062608}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1071,7 +1071,7 @@ Transform:
   - {fileID: 889273242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1418062608
+--- !u!114 &1418062607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1376,10 +1376,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1608220707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a57bd65d8b5d87a48aa1eeba93da0bd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 01a0fc14fd40f98409691c516598a086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 1608220707}
 --- !u!4 &1608220709
 Transform:
   m_ObjectHideFlags: 0

@@ -26,3 +26,4 @@ public class AnimationHandler : MonoBehaviour
         _anim.SetBool("cast", cast);
     }
 }
+
