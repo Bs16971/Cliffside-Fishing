@@ -7,7 +7,7 @@ using UnityEngine;
 public class AnimationHandler : MonoBehaviour
 {
     private Animator _anim;
-    
+    private  Vector3 movement;
     public void Initialize()
     {
         _anim = GetComponentInChildren<Animator>();
@@ -18,6 +18,7 @@ public class AnimationHandler : MonoBehaviour
         _anim.SetFloat("x",x,.1f,Time.deltaTime);
         _anim.SetFloat("y", y, .1f, Time.deltaTime);
         
+        
     }
 
     public void HandleCast(bool cast)
@@ -25,5 +26,6 @@ public class AnimationHandler : MonoBehaviour
         _anim.applyRootMotion = cast;
         _anim.SetBool("cast", cast);
     }
+    
 }
 
