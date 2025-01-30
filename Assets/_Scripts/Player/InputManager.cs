@@ -12,6 +12,12 @@ public class InputManager : MonoBehaviour
     private Controls _controls;
     private Vector2 _move;
     private Vector2 _look;
+    private Vector2 _up;
+    public enum State
+    {
+        Fishing,
+        Hook
+    }
     
     public Vector2 Move
     {
@@ -25,6 +31,13 @@ public class InputManager : MonoBehaviour
         get => _look;
         private set => _look = value;
     }
+
+    public Vector2 Up
+    {
+        get => _up;
+        private set => _look = value;
+    }
+
 
     private void Awake()
     {
@@ -46,8 +59,14 @@ public class InputManager : MonoBehaviour
     {
         _controls.Locomotion.Move.performed += MoveOnperformed;
         _controls.Locomotion.Look.performed += LookOnperformed;
+        _controls.Locomotion.Fly.performed += FlyOnperformed;
     }
-    
+
+    private void FlyOnperformed(InputAction.CallbackContext obj)
+    {
+        _up = obj.ReadValue<Vector2>();
+    }
+
 
     private void LookOnperformed(InputAction.CallbackContext obj)
     {
@@ -59,4 +78,5 @@ public class InputManager : MonoBehaviour
         _move = obj.ReadValue<Vector2>();
         
     }
+    
 }
