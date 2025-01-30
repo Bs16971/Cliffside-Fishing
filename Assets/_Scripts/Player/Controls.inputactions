@@ -15,19 +15,28 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Look",
+                    "name": "Cast",
                     "type": "Button",
-                    "id": "0811b0f6-16db-48cb-8fb6-479e3f48e18b",
+                    "id": "815d2dee-3a47-42a1-8382-15b25460e40e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Cast",
-                    "type": "Button",
-                    "id": "815d2dee-3a47-42a1-8382-15b25460e40e",
-                    "expectedControlType": "Button",
+                    "name": "Look",
+                    "type": "PassThrough",
+                    "id": "3c1506ba-4252-4303-a93a-6759bcbd919f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fly",
+                    "type": "PassThrough",
+                    "id": "1235a2e0-c121-4816-b60d-88c50454dccf",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -91,17 +100,6 @@
                 },
                 {
                     "name": "",
-                    "id": "02a8a07e-d977-4f58-a616-41eeae1a28f9",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4c8321a5-9149-4631-b39c-23219c442dcf",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -110,6 +108,50 @@
                     "action": "Cast",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb2effeb-923e-4207-be7e-1a21b0723b82",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "e4ab94b7-f357-494a-8cb5-4248f8978e4e",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "ef418118-976c-448d-b65b-4ec2010c0bda",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a37a03b4-beaf-44e1-8352-7f7f43c9b32d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
