@@ -68,19 +68,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: y
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Cast
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -162,7 +162,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: f56f30ead1b4c214dbf6b8be5ee29f9f, type: 3}
-    m_Threshold: 0.05555556
+    m_Threshold: 0.027777782
     m_Position: {x: 0, y: 0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -170,24 +170,24 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 9102ab00c29d2a94fa42fb80d3467610, type: 3}
-    m_Threshold: 0.11111112
+    m_Threshold: 0.055555563
     m_Position: {x: 0, y: -0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: x
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: aca3513c1abfb5f49a75cf59b51ce418, type: 3}
-    m_Threshold: 0.16666669
+    m_Motion: {fileID: -203655887218126122, guid: fa6ff4bd1e5ae554cbb0093c75970bee, type: 3}
+    m_Threshold: 0.08333334
     m_Position: {x: -0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: x
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 5844a18a6cc32784c9e8387fee526aea, type: 3}
-    m_Threshold: 0.22222224
-    m_Position: {x: 0.3, y: 0}
+    m_Motion: {fileID: -203655887218126122, guid: 878a7b80d01b3d3419300fc7f07b72a3, type: 3}
+    m_Threshold: 0.11111113
+    m_Position: {x: 0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: x
@@ -195,7 +195,7 @@ BlendTree:
   m_BlendParameter: x
   m_BlendParameterY: y
   m_MinThreshold: 0
-  m_MaxThreshold: 0.22222224
+  m_MaxThreshold: 0.11111113
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 2
