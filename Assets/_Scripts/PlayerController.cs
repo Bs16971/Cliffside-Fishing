@@ -14,7 +14,7 @@ namespace _Scripts.Player
         [SerializeField] private float speed = 5f;
 
         [SerializeField] private float rotationSpeed = 10f;
-
+        
         private void Start()
         {
             _input = InputManager.instance;
@@ -28,6 +28,7 @@ namespace _Scripts.Player
             HandleMovement(Time.deltaTime);
             HandleRotation(Time.deltaTime);
             _animationHandler.UpdateAnimatorValues(_input.Move.x, _input.Move.y);
+            
         }
 
         private void HandleMovement(float delta)
