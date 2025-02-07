@@ -50,11 +50,11 @@ public class FishingLineController : MonoBehaviour
 
         ropeMass += _loadMass;
 
-        float ropeForce = ropeMass * 9.81f;
+        float ropeForce = ropeMass * 1.0f;
         float kRope = ropeForce / 0.01f;
 
         _springJoint.spring = kRope * 1.0f;
-        _springJoint.damper = kRope * .8f;
+        _springJoint.damper = kRope * .05f;
 
         _springJoint.maxDistance = _ropeLength;
     }
