@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class PlayButton : MonoBehaviour
 {
 
-   [SerializeField] private string playGame = "Fishing";
+   [SerializeField] private string _playGame = "Fishing";
+   [SerializeField] private string _shop = "Shop";
    public void NewGameButton()
    {
-      SceneManager.LoadScene(playGame);
+      SceneManager.LoadScene(_playGame);
+      SceneManager.LoadScene(_shop);
    }
+   
 }

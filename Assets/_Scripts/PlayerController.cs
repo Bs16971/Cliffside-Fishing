@@ -15,6 +15,7 @@ namespace _Scripts.Player
 
         [SerializeField] private float rotationSpeed = 10f;
         
+        
         private void Start()
         {
             _input = InputManager.instance;
