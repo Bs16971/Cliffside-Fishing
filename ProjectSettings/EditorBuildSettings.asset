@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Fishing.unity
     guid: 0b99bff48c6be874ea9fa3fd0c628be3
+  - enabled: 1
+    path: Assets/_Scenes/Shop.unity
+    guid: 86746557924ee7d49b3deb639402ff69
+  - enabled: 1
+    path: Assets/_Scenes/ShopHook.unity
+    guid: eaf9449b02ee224499582f2d303ecf7f
   m_configObjects: {}

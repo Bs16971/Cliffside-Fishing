@@ -38,7 +38,6 @@ public class InputManager : MonoBehaviour
         private set => _look = value;
     }
 
-
     private void Awake()
     {
         if (instance == null)
