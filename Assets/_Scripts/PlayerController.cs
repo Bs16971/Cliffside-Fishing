@@ -29,6 +29,9 @@ namespace _Scripts.Player
             HandleMovement(Time.deltaTime);
             HandleRotation(Time.deltaTime);
             _animationHandler.UpdateAnimatorValues(_input.Move.x, _input.Move.y);
+            Vector3 currentPosition = transform.position;
+            currentPosition.y = 0;
+            transform.position = currentPosition;
             
         }
 

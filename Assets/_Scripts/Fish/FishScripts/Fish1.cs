@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
-using UnityEngine;
+    using Unity.VisualScripting;
+    using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+    using UnityEngine.SceneManagement;
+
 
 public class Fish1 : MonoBehaviour
 {
@@ -28,6 +31,7 @@ public class Fish1 : MonoBehaviour
     
     private Vector3 targetPosition;
     private bool caught;
+    
     private Vector3 playerLocation;
 
 
@@ -82,7 +86,7 @@ public class Fish1 : MonoBehaviour
         Vector3 direction = (targetPoint - transform.position).normalized;
         rb.velocity = Vector3.Lerp(rb.velocity, direction * moveSpeed, Time.deltaTime * 2f);
        
-       
+       LookWayMoving();
     }
 
     void ChooseNewRandomPoint()
@@ -109,6 +113,10 @@ public class Fish1 : MonoBehaviour
         }else if (other.CompareTag("Wall"))
         {
             touchingWall = true;
+        } else if (other.CompareTag("TargetPos"))
+        {
+            SceneManager.LoadScene("_Scenes/CaughtScene");
+            Destroy(gameObject);
         }
     }
 
@@ -118,7 +126,7 @@ public class Fish1 : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance > 0.1f)
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, 2f * direction, Time.deltaTime);
+            rb.velocity = Vector3.Lerp(rb.velocity, 5f * direction, Time.deltaTime);
             Debug.Log("is moving and caught");
             if (transform.position == targetPosition)
             {
@@ -137,8 +145,8 @@ public class Fish1 : MonoBehaviour
             
             if (IsInsideBoundary(newPosition) && !touchingWall)
             {
-                Debug.Log(IsInsideBoundary(newPosition));
                 transform.position = Vector3.Lerp(transform.position, newPosition, 10f);
+                LookWayMoving();
 
             }
             else if (transform.position.y < maxY && touchingWall)
@@ -158,6 +166,27 @@ public class Fish1 : MonoBehaviour
         && position.y >= boundaryMin.y && position.y <= boundaryMax.y
         && position.z >= boundaryMin.z && position.z <= boundaryMax.z;
     }
+
+    public bool GetCaught()
+    {
+        return caught;
+    }
+    void LookWayMoving()
+    {
+        Vector3 direction = rb.velocity.normalized;
+        if (caught == true && direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(-direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        }
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+            // transform.forward = direction;
+        }
+    }
+    
     
     
 }

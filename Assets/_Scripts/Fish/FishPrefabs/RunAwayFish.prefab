@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4105338984131326939
+--- !u!1 &421272013196380109
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3679736178121948027}
-  - component: {fileID: 8499999657661985719}
-  - component: {fileID: 6951641142569043426}
-  - component: {fileID: 5302897481045407581}
-  - component: {fileID: 88442362311815113}
-  - component: {fileID: 1856722721667756888}
+  - component: {fileID: 3792621966249024022}
+  - component: {fileID: 4319325692759066405}
+  - component: {fileID: 6573773259347153834}
+  - component: {fileID: -3384798978127180385}
+  - component: {fileID: 145927342660685683}
+  - component: {fileID: 326441906897262837}
   m_Layer: 0
-  m_Name: Basic Fish
+  m_Name: RunAwayFish
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3679736178121948027
+--- !u!4 &3792621966249024022
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4105338984131326939}
+  m_GameObject: {fileID: 421272013196380109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.48, z: -1.51}
+  m_LocalPosition: {x: 1.83, y: 8.59, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8499999657661985719
+--- !u!33 &4319325692759066405
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4105338984131326939}
+  m_GameObject: {fileID: 421272013196380109}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6951641142569043426
+--- !u!23 &6573773259347153834
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4105338984131326939}
+  m_GameObject: {fileID: 421272013196380109}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5302897481045407581
+--- !u!135 &-3384798978127180385
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4105338984131326939}
+  m_GameObject: {fileID: 421272013196380109}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,13 +107,36 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &88442362311815113
+--- !u!114 &145927342660685683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421272013196380109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3be5eebb54eda846ad7cc63e6a6870d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRadius: 5
+  moveSpeed: 5
+  heightVariation: 5
+  stopThreshold: 1
+  minX: -50
+  maxX: 50
+  minY: 5
+  maxY: 50
+  minZ: -50
+  maxZ: 50
+  detectionRange: 5
+--- !u!54 &326441906897262837
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4105338984131326939}
+  m_GameObject: {fileID: 421272013196380109}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -133,26 +156,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1856722721667756888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4105338984131326939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024e13979bc4ae049a629a8eb38df027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveRadius: 5
-  moveSpeed: 2
-  heightVariation: 5
-  stopThreshold: 1
-  minX: -10
-  maxX: 10
-  minY: 0
-  maxY: 20
-  minZ: -10
-  maxZ: 10
+  m_CollisionDetection: 1

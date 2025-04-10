@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 currentVelocity;
     private bool caughtFish = false;
-    private float hookSpeed = 2f;
-    
+    private float hookSpeed = 5f;
+    private Fish2 _fish2;
+    public static String TypeOfFishCaught = "Nothing";
     
     
    
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
             targetPosition = targetObject.transform.position;
 
             caughtFish = false;
+            TypeOfFishCaught = null;
+            PlayerPrefs.SetString("FishType", TypeOfFishCaught);
 
     }
 
@@ -54,18 +57,38 @@ public class PlayerController : MonoBehaviour
     {
         // create a movement vector that is RELATIVE TO THE DIRECTION THE PLAYER IS FACING
         
-        Vector3 movdir = (_input.Move.x * transform.right) + (_input.Move.y * transform.forward) + (_input.Up.y * transform.up);
-        // tell the controller to move
-        _controller.Move(movdir * (hookSpeed * delta));
+            Vector3 movdir = (_input.Move.x * transform.right) + (_input.Move.y * transform.forward) +
+                             (_input.Up.y * transform.up);
+            if (transform.position.y <= 1f && movdir.y < 0)
+            {
+                movdir.y = 0;
+            }
+            // tell the controller to move
+            _controller.Move(movdir * (hookSpeed * delta));
+        
+       
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Fish"))
         {
-            
-            //this.enabled = false;
-            //Invoke(nameof(MovePlayer2), 5f);
+            TypeOfFishCaught = other.tag;
             caughtFish = true;
+            PlayerPrefs.SetString("FishType", TypeOfFishCaught);
+            PlayerPrefs.Save();
+        }else if (other.CompareTag("Betta"))
+        {
+            TypeOfFishCaught = other.tag;
+            caughtFish = true;
+            PlayerPrefs.SetString("FishType", TypeOfFishCaught);
+            PlayerPrefs.Save();
+            
+        } else if (other.CompareTag("Catfish"))
+        {
+            TypeOfFishCaught = other.tag;
+            caughtFish = true;
+            PlayerPrefs.SetString("FishType", TypeOfFishCaught);
+            PlayerPrefs.Save();
             
         }
     }
@@ -79,10 +102,11 @@ public class PlayerController : MonoBehaviour
         if (distance > 0.1f)
         {
             
-            _controller.Move(direction * 2f * Time.deltaTime);
+            _controller.Move(direction * 5f * Time.deltaTime);
             if (transform.position == targetPosition)
             {
                 caughtFish = false;
+                
             }
         }
     }
