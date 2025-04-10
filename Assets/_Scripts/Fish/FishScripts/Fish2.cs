@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Fish2 : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class Fish2 : MonoBehaviour
     [SerializeField] private float maxZ = 10f;
     
     private Vector3 targetPosition;
-    private bool caught; 
+    private bool caught;
+
+   
 
 
     private Rigidbody rb;
@@ -38,7 +41,7 @@ public class Fish2 : MonoBehaviour
         if (caught)
         {
             Caught();
-            Debug.Log("Caught");
+            
         }
         else
         {
@@ -57,7 +60,7 @@ public class Fish2 : MonoBehaviour
     {
         Vector3 direction = (targetPoint - transform.position).normalized;
         rb.velocity = Vector3.Lerp(rb.velocity, direction * moveSpeed, Time.deltaTime * 2f);
-        
+        LookWayMoving();
     }
 
     void ChooseNewRandomPoint()
@@ -78,9 +81,14 @@ public class Fish2 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("TargetPos"))
+        {
+            SceneManager.LoadScene("_Scenes/CaughtScene");
+            Destroy(gameObject);
+           
+        }
         if (other.CompareTag("Player"))
         {
-            
             caught = true;
             
         }
@@ -92,12 +100,32 @@ public class Fish2 : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance > 0.1f)
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, direction * moveSpeed, Time.deltaTime);
-            Debug.Log("is moving and caught");
+            rb.velocity = Vector3.Lerp(rb.velocity, direction * 5, Time.deltaTime);
             if (transform.position == targetPosition)
             {
                 caught = false;
             }
         }
     }
+
+    void LookWayMoving()
+    {
+        Vector3 direction = rb.velocity.normalized;
+        if (caught == true && direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(-direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        }
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+            // transform.forward = direction;
+        }
+    }
+    public bool GetCaught()
+    {
+        return caught;
+    }
+    
 }

@@ -7,6 +7,9 @@ TagManager:
   - Fish
   - TargetPos
   - Wall
+  - Betta
+  - Sell
+  - Catfish
   layers:
   - Default
   - TransparentFX
