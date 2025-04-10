@@ -13,10 +13,12 @@ public class ShopText : MonoBehaviour
     public GameObject woodenRod;
     public GameObject redRod;
     public GameObject goldenRod;
+    public GameObject rodButton;
 
     public GameObject zebraLure;
     public GameObject iceCreamLure;
     public GameObject rainbowLure;
+    public GameObject lureButton;
 
     public void TurnOnRod(int rod)
     {
@@ -26,14 +28,20 @@ public class ShopText : MonoBehaviour
         {
             case 0:
                 woodenRod.SetActive(true);
+                rodButton.SetActive(true);
+                lureButton.SetActive(false);
                 break;
             
             case 1:
                 redRod.SetActive(true);
+                rodButton.SetActive(true);
+                lureButton.SetActive(false);
                 break;
             
             case 2:
                 goldenRod.SetActive(true);
+                rodButton.SetActive(true);
+                lureButton.SetActive(false);
                 break;
         }
     }
@@ -44,15 +52,23 @@ public class ShopText : MonoBehaviour
         {
             case 0:
                 zebraLure.SetActive(true);
+                rodButton.SetActive(false);
+                lureButton.SetActive(true);
                 break;
             
             case 1:
                 iceCreamLure.SetActive(true);
+                rodButton.SetActive(false);
+                lureButton.SetActive(true);
                 break;
             
             case 2:
                 rainbowLure.SetActive(true);
+                rodButton.SetActive(false);
+                lureButton.SetActive(true);
                 break;
         }
     }
+    
+    
 }
