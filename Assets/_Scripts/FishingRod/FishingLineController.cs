@@ -8,6 +8,7 @@ public class FishingLineController : MonoBehaviour
 
      public Transform whatTheRopeIsConnectedTo;
      public Transform whatisHangingFromRope;
+     public  GameObject endOfFishingrRod;
 
     private LineRenderer _lineRenderer;
 
@@ -40,6 +41,7 @@ public class FishingLineController : MonoBehaviour
 
         DisplayRope();
         
+        
     }
 
     private void UpdateSpring()
@@ -68,7 +70,7 @@ public class FishingLineController : MonoBehaviour
         _lineRenderer.startWidth = ropeWidth;
         _lineRenderer.endWidth = ropeWidth;
 
-        Vector3 A = whatTheRopeIsConnectedTo.position;
+        Vector3 A = endOfFishingrRod.transform.position;
         Vector3 D = whatisHangingFromRope.position;
 
         Vector3 B = A + whatTheRopeIsConnectedTo.up * (-(A - D).magnitude * .1f);

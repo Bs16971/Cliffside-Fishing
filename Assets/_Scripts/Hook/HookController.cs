@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
         {
             
             HandleMovement(Time.deltaTime);
-        }  
+        }
+
+        hookSpeed = PlayerPrefs.GetInt("HookSpeed", 5);
 
     }
 
