@@ -32,7 +32,7 @@ public class CastingFishingRod : MonoBehaviour
         }
         if (Time.deltaTime - lastClickedTime > _nextFireTime)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 OnClick();
             }

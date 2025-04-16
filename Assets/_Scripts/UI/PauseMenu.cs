@@ -9,7 +9,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        pauseMenu.SetActive((true));
+        pauseMenu.SetActive(true);
+        Debug.Log("Pause clicked");
     }
 
     public void Home()

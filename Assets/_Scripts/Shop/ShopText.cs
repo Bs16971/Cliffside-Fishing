@@ -30,6 +30,7 @@ public class ShopText : MonoBehaviour
                 woodenRod.SetActive(true);
                 rodButton.SetActive(true);
                 lureButton.SetActive(false);
+                
                 break;
             
             case 1:
@@ -54,18 +55,21 @@ public class ShopText : MonoBehaviour
                 zebraLure.SetActive(true);
                 rodButton.SetActive(false);
                 lureButton.SetActive(true);
+                PlayerPrefs.SetInt("HookSpeed", 10);
                 break;
             
             case 1:
                 iceCreamLure.SetActive(true);
                 rodButton.SetActive(false);
                 lureButton.SetActive(true);
+                PlayerPrefs.SetInt("HookSpeed", 15);
                 break;
             
             case 2:
                 rainbowLure.SetActive(true);
                 rodButton.SetActive(false);
                 lureButton.SetActive(true);
+                PlayerPrefs.SetInt("HookSpeed", 20);
                 break;
         }
     }
