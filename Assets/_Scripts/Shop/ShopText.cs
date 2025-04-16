@@ -22,7 +22,7 @@ public class ShopText : MonoBehaviour
 
     public void TurnOnRod(int rod)
     {
-        Debug.Log("Works");
+        
         
         switch (rod)
         {

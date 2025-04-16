@@ -1818,6 +1818,7 @@ GameObject:
   - component: {fileID: 1418062607}
   - component: {fileID: 1418062608}
   - component: {fileID: 1418062603}
+  - component: {fileID: 1418062609}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1905,6 +1906,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f035f068782744999e8043826bca94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1418062609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418062602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcecfc2ea32b2b544b8a81e54511c880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1784392915}
+  animationName: Cast
+  nextSceneName: Hook
 --- !u!1 &1461451459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57bd65d8b5d87a48aa1eeba93da0bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1608220707}
 --- !u!1 &1632567499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_RedneckMale_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1752382957321286, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4557240161818442, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2736,7 +2756,27 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1291346947539814, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1882883099669150, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1526083073819810, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1799710544208520, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1680867000859788, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1002798468139290, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1897006918443872, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1596826710205218, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1158400528364492, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1646265534653072, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1219741724175396, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1849072956544632, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1823026691983948, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1772364789327636, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1578035906194574, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1394680194312296, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1536649776330598, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1809281847815552, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1137341819065574, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+    - {fileID: 1889083145600172, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4153014068000536, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
       insertIndex: -1
@@ -2746,6 +2786,11 @@ PrefabInstance:
 --- !u!4 &1784392914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557240161818442, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+  m_PrefabInstance: {fileID: 1784392913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1784392915 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95808264491268044, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
   m_PrefabInstance: {fileID: 1784392913}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1982228084
