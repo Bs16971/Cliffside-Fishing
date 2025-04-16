@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CastingFishingRod : MonoBehaviour
 {
@@ -48,5 +49,10 @@ public class CastingFishingRod : MonoBehaviour
             _anim.SetBool("Cast", true);
             
         }
+    }
+
+    public void TransitionToScene(string caughtScene)
+    {
+        SceneManager.LoadScene(caughtScene);
     }
 }

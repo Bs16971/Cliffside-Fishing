@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour
     private Vector2 _move;
     private Vector2 _look;
     private Vector2 _up;
+    private Vector2 _cast;
+
     public enum State
     {
         Fishing,
@@ -38,6 +40,12 @@ public class InputManager : MonoBehaviour
         private set => _look = value;
     }
 
+    public Vector2 Cast
+    {
+        get => _cast;
+        private set => _cast = value;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -59,6 +67,7 @@ public class InputManager : MonoBehaviour
         _controls.Locomotion.Move.performed += MoveOnperformed;
         _controls.Locomotion.Look.performed += LookOnperformed;
         _controls.Locomotion.Fly.performed += FlyOnperformed;
+        _controls.Locomotion.Cast.performed += CastOnperformed;
     }
 
     private void FlyOnperformed(InputAction.CallbackContext obj)
@@ -77,5 +86,9 @@ public class InputManager : MonoBehaviour
         _move = obj.ReadValue<Vector2>();
         
     }
-    
+
+    private void CastOnperformed(InputAction.CallbackContext obj)
+    {
+        _cast = obj.ReadValue<Vector2>();
+    }
 }
