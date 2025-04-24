@@ -1,32 +1,45 @@
+    using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Cinemachine;
+    using Unity.VisualScripting;
+    using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
+    using UnityEngine.SceneManagement;
 
-public class Fish2 : MonoBehaviour
+
+public class RunTowards : MonoBehaviour
 {
+
+
     [SerializeField] private float moveRadius = 5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float heightVariation = 5f;
     [SerializeField] private float stopThreshold = 1f;
     [SerializeField] private float minX = -10;
     [SerializeField] private float maxX = 10;
-    [SerializeField] private float minY = 0f;
+    [SerializeField] private float minY = 2f;
     [SerializeField] private float maxY = 5f;
     [SerializeField] private float minZ = -10f;
     [SerializeField] private float maxZ = 10f;
-    
+    [SerializeField] private float detectionRange = 2f;
+    private Vector3 boundaryMin = new Vector3(-8f, 2, -8f);
+    private Vector3 boundaryMax = new Vector3(9f, 10f, 8f);
+    private bool touchingWall;
+   
     
     private Vector3 targetPosition;
     private bool caught;
-
-   
+    
+    private Vector3 playerLocation;
 
 
     private Rigidbody rb;
     private Vector3 targetPoint;
-
+    private GameObject player;
+    private Vector3 velocity = Vector3.zero;
+    private bool test;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -34,22 +47,31 @@ public class Fish2 : MonoBehaviour
         caught = false;
         GameObject targetObject = GameObject.FindGameObjectWithTag("TargetPos");
         targetPosition = targetObject.transform.position;
-        PlayerPrefs.SetInt("Chance", 5);
-        PlayerPrefs.SetInt("DidItBreak", 2);
+       player = GameObject.FindGameObjectWithTag("Player");
+       playerLocation = player.transform.position;
+       
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (caught)
+        
+        playerLocation = player.transform.position;
+        float distanceToPlayer = Vector3.Distance(transform.position, playerLocation);
+        
+        if (distanceToPlayer < detectionRange && !caught && touchingWall == false)
+        {
+              //RunTo();
+              ChooseNewRandomPoint();
+              
+            
+        } else if (caught)
         {
             Caught();
-            
+            Debug.Log("Caught");
         }
         else
         {
-
-
             MoveToTarget();
 
             if (Vector3.Distance(transform.position, targetPoint) < stopThreshold)
@@ -63,7 +85,8 @@ public class Fish2 : MonoBehaviour
     {
         Vector3 direction = (targetPoint - transform.position).normalized;
         rb.velocity = Vector3.Lerp(rb.velocity, direction * moveSpeed, Time.deltaTime * 2f);
-        LookWayMoving();
+       
+       LookWayMoving();
     }
 
     void ChooseNewRandomPoint()
@@ -84,22 +107,16 @@ public class Fish2 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("TargetPos") )
+        if (other.CompareTag("Player"))
+        {
+            caught = true;
+        }else if (other.CompareTag("Wall"))
+        {
+            touchingWall = true;
+        } else if (other.CompareTag("TargetPos"))
         {
             SceneManager.LoadScene("_Scenes/CaughtScene");
             Destroy(gameObject);
-           
-           
-        }
-        if (other.CompareTag("Player"))
-        {
-            if (!caught)
-            {
-
-                StartCoroutine(CheckEscapeBeforeCaught());
-                caught = true;
-            } 
-
         }
     }
 
@@ -109,7 +126,8 @@ public class Fish2 : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance > 0.1f)
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, direction * 50f, Time.deltaTime);
+            rb.velocity = Vector3.Lerp(rb.velocity, 5f * direction, Time.deltaTime);
+            Debug.Log("is moving and caught");
             if (transform.position == targetPosition)
             {
                 caught = false;
@@ -117,6 +135,42 @@ public class Fish2 : MonoBehaviour
         }
     }
 
+    void RunTo()
+    {
+        Vector3 directionAway = (transform.position - player.transform.position).normalized;
+        Vector3 newPosition = playerLocation;
+        test = true;
+        if (!caught)
+        {
+            
+            if (IsInsideBoundary(newPosition) && !touchingWall)
+            {
+                transform.position = Vector3.Lerp(transform.position, newPosition, 3f * Time.deltaTime);
+                LookWayMoving();
+
+            }
+            else if (transform.position.y < maxY && touchingWall)
+            {
+                rb.velocity = new Vector3(0, moveSpeed, 0);
+            }
+        }
+    }
+
+   
+    
+    
+
+    bool IsInsideBoundary(Vector3 position)
+    {
+        return position.x >= boundaryMin.x && position.x <= boundaryMax.x
+        && position.y >= boundaryMin.y && position.y <= boundaryMax.y
+        && position.z >= boundaryMin.z && position.z <= boundaryMax.z;
+    }
+
+    public bool GetCaught()
+    {
+        return caught;
+    }
     void LookWayMoving()
     {
         Vector3 direction = rb.velocity.normalized;
@@ -132,34 +186,10 @@ public class Fish2 : MonoBehaviour
             // transform.forward = direction;
         }
     }
-    public bool GetCaught()
-    {
-        return caught;
-    }
     
-    IEnumerator CheckEscapeBeforeCaught()
-    {
-        yield return new WaitForSeconds(0.25f); // ⏳ Wait before deciding
-
-        int chance = PlayerPrefs.GetInt("Chance", 5);
-        int roll = Random.Range(0, 10);
-
-        Debug.Log("Escape Roll: " + roll + " vs Chance: " + chance);
-        
-
-        if (roll >= chance)
-        {
-            Debug.Log("Fish escaped before reaching TargetPos!");
-            caught = false;
-            ChooseNewRandomPoint();
-            PlayerPrefs.SetInt("DidItBreak", 1);// Resume swimming
-        }
-        else
-        {
-            PlayerPrefs.SetInt("DidItBreak", 0);
-        }
-        // else: fish continues heading toward TargetPos
-    }
-
+    
     
 }
+
+ 
+

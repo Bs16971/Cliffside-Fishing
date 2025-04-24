@@ -27,13 +27,19 @@ public class SellFish : MonoBehaviour
         fishType = null;
         fishType = PlayerPrefs.GetString("FishType", "DefaultFish");
         hide = GameObject.FindGameObjectWithTag("Betta").transform.position;
-        
+        money = PlayerPrefs.GetInt("Money", 0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        int caughtM = PlayerPrefs.GetInt("CaughtAFish", 0);
+        Debug.Log(caughtM);
+        if (caughtM == 1)
+        {
+           showFish(); 
+        }
     }
 
     void isTargetObjectAssigned()
@@ -68,6 +74,7 @@ public class SellFish : MonoBehaviour
 
     void showFish()
     {
+        money = PlayerPrefs.GetInt("Money", 0);
         fishType = PlayerPrefs.GetString("FishType", "DefaultFish");
         
         
@@ -80,7 +87,7 @@ public class SellFish : MonoBehaviour
             targetObject.transform.position = show;
             UnlockMouse();
             fishType = "Default";
-            money += (int)FindFishValue("Betta");
+            money = money + (int)FindFishValue("Betta");
             PlayerPrefs.SetInt("Money", money);
         } else if (fishType == "Fish")
         {
@@ -101,6 +108,9 @@ public class SellFish : MonoBehaviour
             money += (int)FindFishValue("Catfish");
             PlayerPrefs.SetInt("Money", money);
         }
+
+        Debug.Log("Money" + money);
+        PlayerPrefs.SetInt("CaughtAFish", 0);
     }
 
     float FindFishValue(String fish)

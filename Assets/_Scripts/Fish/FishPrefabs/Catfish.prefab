@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRadius: 5
-  moveSpeed: 2
+  moveSpeed: 10
   heightVariation: 5
   stopThreshold: 1
   minX: -140
