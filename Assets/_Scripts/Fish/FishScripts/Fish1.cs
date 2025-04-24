@@ -109,7 +109,13 @@ public class Fish1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            caught = true;
+            if (!caught)
+            {
+
+                StartCoroutine(CheckEscapeBeforeCaught());
+                caught = true;
+            } 
+            
         }else if (other.CompareTag("Wall"))
         {
             touchingWall = true;
@@ -126,7 +132,7 @@ public class Fish1 : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance > 0.1f)
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, 5f * direction, Time.deltaTime);
+            rb.velocity = Vector3.Lerp(rb.velocity, 50f * direction, Time.deltaTime);
             Debug.Log("is moving and caught");
             if (transform.position == targetPosition)
             {
@@ -185,6 +191,30 @@ public class Fish1 : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
             // transform.forward = direction;
         }
+    }
+    
+    IEnumerator CheckEscapeBeforeCaught()
+    {
+        yield return new WaitForSeconds(0.25f); // ⏳ Wait before deciding
+
+        int chance = PlayerPrefs.GetInt("Chance", 5);
+        int roll = Random.Range(0, 10);
+
+        Debug.Log("Escape Roll: " + roll + " vs Chance: " + chance);
+        
+
+        if (roll >= chance)
+        {
+            Debug.Log("Fish escaped before reaching TargetPos!");
+            caught = false;
+            ChooseNewRandomPoint();
+            PlayerPrefs.SetInt("DidItBreak", 1);// Resume swimming
+        }
+        else
+        {
+            PlayerPrefs.SetInt("DidItBreak", 0);
+        }
+        // else: fish continues heading toward TargetPos
     }
     
     

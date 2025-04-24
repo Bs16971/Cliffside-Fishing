@@ -55,7 +55,7 @@ public class Spawner : MonoBehaviour
     Vector3 GetRandomSpawnPosition()
     {
         float randomX = Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2);
-        float randomY = Random.Range(-spawnAreaSize.y / 2, spawnAreaSize.y / 2);
+        float randomY = Random.Range(0, spawnAreaSize.y / 2);
         float randomZ = Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2);
 
         Vector3 spawnPoint= new Vector3(randomX, randomY, randomZ);

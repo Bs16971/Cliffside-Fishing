@@ -40,6 +40,11 @@ public class FishingLineController : MonoBehaviour
         UpdateWinch();
 
         DisplayRope();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(WaitAndDoSomething());
+           
+        }
         
         
     }
@@ -110,5 +115,13 @@ public class FishingLineController : MonoBehaviour
             UpdateSpring();
         }
     }
+    
+        IEnumerator WaitAndDoSomething()
+        {
+        
+            yield return new WaitForSeconds(1.4f); // Waits for 1 second
+            _maxRopeLength = 100;
+        }
+    
 }
 

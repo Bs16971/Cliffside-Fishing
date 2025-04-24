@@ -41,11 +41,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (caughtFish)
+        if (caughtFish &&  PlayerPrefs.GetInt("DidItBreak", 2) == 1)
         {
             MovePlayer2();
         }
-        else
+        else if(PlayerPrefs.GetInt("DidItBreak", 2) ==2 )
         {
             
             HandleMovement(Time.deltaTime);
@@ -92,7 +92,12 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetString("FishType", TypeOfFishCaught);
             PlayerPrefs.Save();
             
+        } 
+        if(other.CompareTag("TargetPos"))
+        {
+            PlayerPrefs.SetInt("DidItBreak", 2);
         }
+        PlayerPrefs.SetInt("CaughtAFish", 1);
     }
 
    
@@ -104,13 +109,14 @@ public class PlayerController : MonoBehaviour
         if (distance > 0.1f)
         {
             
-            _controller.Move(direction * 5f * Time.deltaTime);
+            _controller.Move(direction * 40f * Time.deltaTime);
             if (transform.position == targetPosition)
             {
                 caughtFish = false;
                 
             }
         }
+        
     }
     
     
