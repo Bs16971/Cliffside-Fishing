@@ -2611,7 +2611,6 @@ GameObject:
   - component: {fileID: 1329526958}
   - component: {fileID: 1329526962}
   - component: {fileID: 1329526963}
-  - component: {fileID: 1329526964}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2745,18 +2744,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1329526964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329526956}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cb9d31a5aa38494aa8522217ff61ec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1418693832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3224,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5683e61f323b0534a9aaf9b97634afad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cast:
+    m_Name: Cast
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 15bddc10-f8ad-4500-b898-e726d7208a6d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!4 &1640385438
 Transform:
   m_ObjectHideFlags: 0

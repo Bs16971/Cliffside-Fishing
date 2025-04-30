@@ -500,7 +500,6 @@ GameObject:
   - component: {fileID: 293050079}
   - component: {fileID: 293050085}
   - component: {fileID: 293050078}
-  - component: {fileID: 293050086}
   m_Layer: 0
   m_Name: Fishing Rod
   m_TagString: Untagged
@@ -778,22 +777,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &293050086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293050077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc85089d7760d23478f9b8d753f1b67c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Slot1: {fileID: 293050077}
-  Slot2: {fileID: 0}
-  Slot3: {fileID: 0}
-  Slot4: {fileID: 0}
 --- !u!1 &300531649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,50 +1697,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1608220707}
---- !u!1 &1099436245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1099436247}
-  - component: {fileID: 1099436248}
-  m_Layer: 0
-  m_Name: InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1099436247
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099436245}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0355618, y: 5.763775, z: 81.07529}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1099436248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099436245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5683e61f323b0534a9aaf9b97634afad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1233388207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,6 +1777,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4153014068000536, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
   m_PrefabInstance: {fileID: 1784392913}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1256223352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1564443653002224, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+  m_PrefabInstance: {fileID: 1784392913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1418062602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,8 +1794,8 @@ GameObject:
   - component: {fileID: 1418062605}
   - component: {fileID: 1418062607}
   - component: {fileID: 1418062603}
-  - component: {fileID: 1418062609}
   - component: {fileID: 1418062610}
+  - component: {fileID: 1418062611}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1927,21 +1871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce3e04507515d848b3a3709e46f5c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1418062609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418062602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcecfc2ea32b2b544b8a81e54511c880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1784392915}
-  animationName: Cast
-  nextSceneName: Hook
 --- !u!114 &1418062610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1957,6 +1886,29 @@ MonoBehaviour:
   lureTransform: {fileID: 835509333}
   RodTipTransform: {fileID: 649912113}
   castForce: 100
+--- !u!114 &1418062611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418062602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f766c8490427f49b083c50823d3bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodenRod: {fileID: 0}
+  redRod: {fileID: 0}
+  goldenRod: {fileID: 0}
+  rodButton: {fileID: 0}
+  hand: {fileID: 1418062606}
+  currentRod: {fileID: 293050077}
+  zebraLure: {fileID: 0}
+  iceCreamLure: {fileID: 0}
+  rainbowLure: {fileID: 0}
+  lureButton: {fileID: 0}
+  broke: {fileID: 0}
 --- !u!1 &1461451459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +1918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1461451461}
-  - component: {fileID: 1461451460}
+  - component: {fileID: 1461451462}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -1974,18 +1926,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1461451460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461451459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5683e61f323b0534a9aaf9b97634afad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1461451461
 Transform:
   m_ObjectHideFlags: 0
@@ -2001,6 +1941,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1461451462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461451459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5683e61f323b0534a9aaf9b97634afad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cast:
+    m_Name: Cast
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2412c905-ae9d-4fba-9ccf-37892db77371
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1480829385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,7 +2912,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4153014068000536, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 293050084}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1564443653002224, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1784392916}
   m_SourcePrefab: {fileID: 100100000, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
 --- !u!4 &1784392914 stripped
 Transform:
@@ -2963,6 +2927,21 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95808264491268044, guid: 7126961e40fcaf34297e9547d17c2f70, type: 3}
   m_PrefabInstance: {fileID: 1784392913}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1784392916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256223352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcecfc2ea32b2b544b8a81e54511c880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1784392915}
+  Cast: Cast
+  nextSceneName: Hook
 --- !u!1 &1982228084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,7 +3047,6 @@ SceneRoots:
   - {fileID: 914914081}
   - {fileID: 300531652}
   - {fileID: 368201152}
-  - {fileID: 1099436247}
   - {fileID: 1418062606}
   - {fileID: 835509333}
   - {fileID: 715214935}

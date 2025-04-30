@@ -29,14 +29,15 @@ public class ShopText : MonoBehaviour
         switch (rod)
         {
             case 0:
-                if (PlayerPrefs.GetInt("Money", 0) >= 5)
+                if (money >= 10)
                 {
                     woodenRod.SetActive(true);
                     rodButton.SetActive(true);
                     lureButton.SetActive(false);
-                    money -= 5;
+                    money -= 10;
                     PlayerPrefs.SetInt("Money", money);
                     PlayerPrefs.SetInt("Chance", 6);
+                    PlayerPrefs.SetInt("EquippedRod", 0);
                 }
                 else
                 {
@@ -46,16 +47,15 @@ public class ShopText : MonoBehaviour
                 break;
             
             case 1:
-                if (PlayerPrefs.GetInt("Money", 0) >= 10)
+                if (money >= 15)
                 {
-
-
                     redRod.SetActive(true);
                     rodButton.SetActive(true);
                     lureButton.SetActive(false);
-                    money -= 10;
+                    money -= 15;
                     PlayerPrefs.SetInt("Money", money);
                     PlayerPrefs.SetInt("Chance", 8);
+                    PlayerPrefs.SetInt("EquippedRod", 1);
                 }
                 else
                 {
@@ -65,14 +65,15 @@ public class ShopText : MonoBehaviour
                 break;
             
             case 2:
-                if (PlayerPrefs.GetInt("Money", 0) >= 15)
+                if (money >= 20)
                 {
                     goldenRod.SetActive(true);
                     rodButton.SetActive(true);
                     lureButton.SetActive(false);
-                    money -= 15;
+                    money -= 20;
                     PlayerPrefs.SetInt("Money", money);
                     PlayerPrefs.SetInt("Chance", 10);
+                    PlayerPrefs.SetInt("EquippedRod", 2);
                 }
                 else
                 {
@@ -89,7 +90,7 @@ public class ShopText : MonoBehaviour
         switch (lure)
         {
             case 0:
-                if (PlayerPrefs.GetInt("Money", 0) >= 5)
+                if (money >= 5)
                 {
                     zebraLure.SetActive(true);
                     rodButton.SetActive(false);
@@ -97,6 +98,7 @@ public class ShopText : MonoBehaviour
                     PlayerPrefs.SetInt("HookSpeed", 10);
                     money -= 5;
                     PlayerPrefs.SetInt("Money", money);
+                    PlayerPrefs.SetInt("EquippedLure", 0);
                 }
                 else
                 {
@@ -106,7 +108,7 @@ public class ShopText : MonoBehaviour
                 break;
             
             case 1:
-                if (PlayerPrefs.GetInt("Money", 0) >= 10)
+                if (money >= 10)
                 {
                     iceCreamLure.SetActive(true);
                     rodButton.SetActive(false);
@@ -114,7 +116,7 @@ public class ShopText : MonoBehaviour
                     PlayerPrefs.SetInt("HookSpeed", 15);
                     money -= 10;
                     PlayerPrefs.SetInt("Money", money);
-                    
+                    PlayerPrefs.SetInt("EquippedLure", 1);
                 }
                 else
                 {
@@ -124,7 +126,7 @@ public class ShopText : MonoBehaviour
                 break;
             
             case 2:
-                if (PlayerPrefs.GetInt("Money", 0) >= 15)
+                if (money >= 15)
                 {
                     rainbowLure.SetActive(true);
                     rodButton.SetActive(false);
@@ -132,6 +134,7 @@ public class ShopText : MonoBehaviour
                     PlayerPrefs.SetInt("HookSpeed", 20);
                     money -= 15;
                     PlayerPrefs.SetInt("Money", money);
+                    PlayerPrefs.SetInt("EquippedLure", 2);
                 }
                 else
                 {
