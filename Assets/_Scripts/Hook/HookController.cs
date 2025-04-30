@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using UnityEditor.AssetImporters;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float hookSpeed = 5f;
     private Fish2 _fish2;
     public static String TypeOfFishCaught = "Nothing";
+   
     
     
    
@@ -41,17 +44,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (caughtFish &&  PlayerPrefs.GetInt("DidItBreak", 2) == 1)
+        hookSpeed = PlayerPrefs.GetInt("HookSpeed", 5);
+        
+        if (caughtFish)
         {
-            MovePlayer2();
+            if (PlayerPrefs.GetInt("DidItBreak", 1) == 0)
+            {
+                MovePlayer2();
+            }
+            else
+            {
+                HandleMovement(Time.deltaTime);
+            }
         }
-        else if(PlayerPrefs.GetInt("DidItBreak", 2) ==2 )
+        else if(PlayerPrefs.GetInt("DidItBreak", 1) ==1 )
         {
             
             HandleMovement(Time.deltaTime);
         }
 
-        hookSpeed = PlayerPrefs.GetInt("HookSpeed", 5);
+       
 
     }
 
@@ -78,12 +90,14 @@ public class PlayerController : MonoBehaviour
             caughtFish = true;
             PlayerPrefs.SetString("FishType", TypeOfFishCaught);
             PlayerPrefs.Save();
+            
         }else if (other.CompareTag("Betta"))
         {
             TypeOfFishCaught = other.tag;
             caughtFish = true;
             PlayerPrefs.SetString("FishType", TypeOfFishCaught);
             PlayerPrefs.Save();
+            
             
         } else if (other.CompareTag("Catfish"))
         {
@@ -92,10 +106,19 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetString("FishType", TypeOfFishCaught);
             PlayerPrefs.Save();
             
-        } 
+            
+        } else if (other.CompareTag("LionFish"))
+        {
+            TypeOfFishCaught = other.tag;
+            caughtFish = true;
+            PlayerPrefs.SetString("FishType", TypeOfFishCaught);
+            PlayerPrefs.Save();
+        }
+        
         if(other.CompareTag("TargetPos"))
         {
-            PlayerPrefs.SetInt("DidItBreak", 2);
+            // Thread.Sleep(1000);
+            PlayerPrefs.SetInt("DidItBreak", 1);
         }
         PlayerPrefs.SetInt("CaughtAFish", 1);
     }

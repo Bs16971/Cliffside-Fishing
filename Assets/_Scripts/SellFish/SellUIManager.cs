@@ -1,9 +1,7 @@
-using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI; // Required for UI elements
+using TMPro;  // Make sure this is included for TextMeshPro
 
-public class ShowMoney : MonoBehaviour
+public class SellUIManager : MonoBehaviour
 {
     public TMP_Text moneyText;   // Drag your TMP_Text UI element here in the Inspector
 
@@ -23,4 +21,3 @@ public class ShowMoney : MonoBehaviour
         moneyText.text = newMoney.ToString("C0");  // Show new money after update
     }
 }
-

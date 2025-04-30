@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private float sensitivity = 50;
 
     private float _xRot;
+    public Transform target;
+    public float duration = 3f; 
+
+    private bool isForcingLook = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +27,11 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         HandleLook(Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        target = other.transform;
     }
 
     private void HandleLook(float delta)
@@ -38,5 +48,27 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(_xRot, 0, 0);
        playerParent.Rotate(Vector3.up, mouseX);
        
+    }
+    IEnumerator LookRoutine()
+    {
+        isForcingLook = true;
+
+        Transform cam = Camera.main.transform;
+        Quaternion originalRotation = cam.rotation;
+        
+
+        playerParent.Rotate(target.transform.position);
+
+        yield return new WaitForSeconds(duration);
+
+        cam.rotation = originalRotation; 
+        isForcingLook = false;
+    }
+    public void ForceLookAtTarget()
+    {
+        if (!isForcingLook)
+        {
+            StartCoroutine(LookRoutine());
+        }
     }
 }
