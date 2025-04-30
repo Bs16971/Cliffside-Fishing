@@ -47,5 +47,9 @@ public class AnimationSceneTransition : MonoBehaviour
         {
             Debug.LogWarning("Animation clip not found or length is zero.");
         }
+        
+        
     }
+
+   
 }
