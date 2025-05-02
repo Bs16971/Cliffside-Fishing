@@ -68,7 +68,7 @@ public class Fish1 : MonoBehaviour
         } else if (caught)
         {
             Caught();
-            Debug.Log("Caught");
+            
         }
         else
         {
@@ -133,7 +133,7 @@ public class Fish1 : MonoBehaviour
         if (distance > 0.1f)
         {
             rb.velocity = Vector3.Lerp(rb.velocity, 50f * direction, Time.deltaTime);
-            Debug.Log("is moving and caught");
+            
             if (transform.position == targetPosition)
             {
                 caught = false;
@@ -200,21 +200,28 @@ public class Fish1 : MonoBehaviour
         int chance = PlayerPrefs.GetInt("Chance", 5);
         int roll = Random.Range(0, 10);
 
-        Debug.Log("Escape Roll: " + roll + " vs Chance: " + chance);
+       
         
 
         if (roll >= chance)
         {
-            Debug.Log("Fish escaped before reaching TargetPos!");
+           
             caught = false;
+            StartCoroutine(TemporarySpeedBoost(2));
             ChooseNewRandomPoint();
-            PlayerPrefs.SetInt("DidItBreak", 1);// Resume swimming
+            PlayerPrefs.SetInt("DidItBreak", 1);
         }
         else
         {
             PlayerPrefs.SetInt("DidItBreak", 0);
         }
-        // else: fish continues heading toward TargetPos
+        
+    }
+    IEnumerator TemporarySpeedBoost(float duration)
+    {
+        moveSpeed = 30f;
+        yield return new WaitForSeconds(duration);
+        moveSpeed = 5f;
     }
     
     

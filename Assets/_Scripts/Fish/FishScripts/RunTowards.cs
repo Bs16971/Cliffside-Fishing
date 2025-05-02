@@ -19,11 +19,11 @@ public class RunTowards : MonoBehaviour
     [SerializeField] private float stopThreshold = 1f;
     [SerializeField] private float minX = -10;
     [SerializeField] private float maxX = 10;
-    [SerializeField] private float minY = 2f;
-    [SerializeField] private float maxY = 5f;
+    [SerializeField] private float minY = 10f;
+    [SerializeField] private float maxY = 40f;
     [SerializeField] private float minZ = -10f;
     [SerializeField] private float maxZ = 10f;
-    [SerializeField] private float detectionRange = 2f;
+    [SerializeField] private float detectionRange = 20f;
     private Vector3 boundaryMin = new Vector3(-8f, 2, -8f);
     private Vector3 boundaryMax = new Vector3(9f, 10f, 8f);
     private bool touchingWall;
@@ -61,8 +61,9 @@ public class RunTowards : MonoBehaviour
         
         if (distanceToPlayer < detectionRange && !caught && touchingWall == false)
         {
-              //RunTo();
-              ChooseNewRandomPoint();
+              RunTo();
+             Debug.Log("detected");
+              
               
             
         } else if (caught)
@@ -77,6 +78,21 @@ public class RunTowards : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPoint) < stopThreshold)
             {
                 ChooseNewRandomPoint();
+            }
+        }
+
+        Vector3 clampedPosition = rb.position;
+        if (clampedPosition.y < minY) 
+        {
+            clampedPosition.y = minY;
+            rb.position = clampedPosition;
+            ChooseNewRandomPoint();
+            
+            Vector3 currentVelocity = rb.velocity;
+            if (currentVelocity.y < minY)
+            {
+                currentVelocity.y = minY;
+                rb.velocity = currentVelocity;
             }
         }
     }
@@ -109,7 +125,14 @@ public class RunTowards : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            caught = true;
+            if (!caught)
+            {
+
+                
+                caught = true;
+                PlayerPrefs.SetInt("DidItBreak", 0);
+            } 
+           
         }else if (other.CompareTag("Wall"))
         {
             touchingWall = true;
@@ -126,7 +149,7 @@ public class RunTowards : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance > 0.1f)
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, 5f * direction, Time.deltaTime);
+            rb.velocity = Vector3.Lerp(rb.velocity, 50f * direction, Time.deltaTime);
             Debug.Log("is moving and caught");
             if (transform.position == targetPosition)
             {
@@ -137,16 +160,28 @@ public class RunTowards : MonoBehaviour
 
     void RunTo()
     {
-        Vector3 directionAway = (transform.position - player.transform.position).normalized;
-        Vector3 newPosition = playerLocation;
+        
+        Vector3 directionTo = (player.transform.position - transform.position).normalized;
+        Vector3 newPosition = playerLocation + directionTo;
         test = true;
         if (!caught)
         {
-            
-            if (IsInsideBoundary(newPosition) && !touchingWall)
+            Debug.Log("Going to player");
+            if (IsInsideBoundary(newPosition))
             {
-                transform.position = Vector3.Lerp(transform.position, newPosition, 3f * Time.deltaTime);
+                Debug.Log("position is fine");
+            }
+
+            if (!touchingWall)
+            {
+                Debug.Log("TouchingWall is fine");
+            }
+            if (!touchingWall)
+            {
+                rb.velocity = directionTo * moveSpeed;
                 LookWayMoving();
+                Debug.Log("Is going towards player");
+                Debug.DrawLine(transform.position, player.transform.position, Color.red);
 
             }
             else if (transform.position.y < maxY && touchingWall)
@@ -186,6 +221,8 @@ public class RunTowards : MonoBehaviour
             // transform.forward = direction;
         }
     }
+    
+
     
     
     

@@ -11,6 +11,7 @@ using Button = UnityEngine.UI.Button;
 using Cursor = UnityEngine.Cursor;
 using Random = UnityEngine.Random;
 
+
 public class SellFish : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -20,6 +21,9 @@ public class SellFish : MonoBehaviour
     private Vector3 show;
     public int money;
     private Vector3 hide;
+    [SerializeField] private SellUIManager sellUIManager; 
+
+    
     
     void Start()
     {
@@ -35,7 +39,7 @@ public class SellFish : MonoBehaviour
     void Update()
     {
         int caughtM = PlayerPrefs.GetInt("CaughtAFish", 0);
-        Debug.Log(caughtM);
+        
         if (caughtM == 1)
         {
            showFish(); 
@@ -76,7 +80,7 @@ public class SellFish : MonoBehaviour
     {
         money = PlayerPrefs.GetInt("Money", 0);
         fishType = PlayerPrefs.GetString("FishType", "DefaultFish");
-        
+        sellUIManager.CacheOldMoney(money);
         
         
        
@@ -87,6 +91,7 @@ public class SellFish : MonoBehaviour
             targetObject.transform.position = show;
             UnlockMouse();
             fishType = "Default";
+            PlayerPrefs.SetInt("FishValue", (int)FindFishValue("Betta"));
             money = money + (int)FindFishValue("Betta");
             PlayerPrefs.SetInt("Money", money);
         } else if (fishType == "Fish")
@@ -96,6 +101,7 @@ public class SellFish : MonoBehaviour
             isTargetObjectAssigned();
             targetObject.transform.position = show;
             fishType = "Default";
+            PlayerPrefs.SetInt("FishValue", (int)FindFishValue("Fish"));
             money += (int)FindFishValue("Fish");
             PlayerPrefs.SetInt("Money", money);
         }else if (fishType == "Catfish")
@@ -105,11 +111,23 @@ public class SellFish : MonoBehaviour
             isTargetObjectAssigned();
             targetObject.transform.position = show;
             fishType = "Default";
+            PlayerPrefs.SetInt("FishValue", (int)FindFishValue("Catfish"));
             money += (int)FindFishValue("Catfish");
             PlayerPrefs.SetInt("Money", money);
+        } else if (fishType == "LionFish")
+        {
+            UnlockMouse();
+            targetObject = GameObject.FindGameObjectWithTag("LionFish");
+            isTargetObjectAssigned();
+            targetObject.transform.position = show;
+            fishType = "Default";
+            PlayerPrefs.SetInt("FishValue", (int)FindFishValue("LionFish"));
+            money += (int)FindFishValue("LionFish");
+            PlayerPrefs.SetInt("Money", money);
         }
+        
 
-        Debug.Log("Money" + money);
+      
         PlayerPrefs.SetInt("CaughtAFish", 0);
     }
 
@@ -125,7 +143,11 @@ public class SellFish : MonoBehaviour
         } else if (fish == "Catfish")
         {
             return (float)Math.Round(multiplier * 1);
+        } else if (fish == "LionFish")
+        {
+            return (float)Math.Round(multiplier * -0.5);
         }
+        
 
         return 0;
     }

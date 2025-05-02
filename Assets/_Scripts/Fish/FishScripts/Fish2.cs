@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -35,7 +36,7 @@ public class Fish2 : MonoBehaviour
         GameObject targetObject = GameObject.FindGameObjectWithTag("TargetPos");
         targetPosition = targetObject.transform.position;
         PlayerPrefs.SetInt("Chance", 5);
-        PlayerPrefs.SetInt("DidItBreak", 2);
+        PlayerPrefs.SetInt("DidItBreak", 1);
     }
 
     // Update is called once per frame
@@ -143,23 +144,31 @@ public class Fish2 : MonoBehaviour
 
         int chance = PlayerPrefs.GetInt("Chance", 5);
         int roll = Random.Range(0, 10);
-
-        Debug.Log("Escape Roll: " + roll + " vs Chance: " + chance);
+        
         
 
         if (roll >= chance)
         {
-            Debug.Log("Fish escaped before reaching TargetPos!");
+            
+           
             caught = false;
+            StartCoroutine(TemporarySpeedBoost(2));
             ChooseNewRandomPoint();
             PlayerPrefs.SetInt("DidItBreak", 1);// Resume swimming
         }
         else
         {
             PlayerPrefs.SetInt("DidItBreak", 0);
-        }
+        } 
         // else: fish continues heading toward TargetPos
     }
 
-    
+    IEnumerator TemporarySpeedBoost(float duration)
+    {
+        moveSpeed = 30f;
+        yield return new WaitForSeconds(duration);
+        moveSpeed = 5f;
+    }
+
+
 }
