@@ -44,7 +44,6 @@ public class FishingLineController : MonoBehaviour
         UpdateWinch();
 
         DisplayRope();
-        
         _input.Cast.performed += context => StartCoroutine(WaitAndDoSomething());
     }
 
@@ -117,8 +116,7 @@ public class FishingLineController : MonoBehaviour
     
         IEnumerator WaitAndDoSomething()
         {
-        
-            yield return new WaitForSeconds(1.4f); // Waits for 1 second
+            yield return new WaitForSeconds(1.4f); 
             _maxRopeLength = 100;
         }
     

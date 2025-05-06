@@ -34,26 +34,6 @@ public class CastingFishingRod : MonoBehaviour
     void Update()
     {
 
-        
-        
-            /*
-        if (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > .7f && _anim.GetCurrentAnimatorStateInfo(0)
-            .IsName("Cast"))
-        {
-            _anim.SetBool("Cast", false);
-            noOfClicks = 0;
-        }
-        
-        
-        if (Time.time - lastClickedTime > _nextFireTime)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                OnClick();
-            }
-        }
-        */
-        
     }
 
     private void OnCastPerformed()

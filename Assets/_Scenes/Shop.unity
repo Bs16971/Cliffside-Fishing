@@ -361,7 +361,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -894,24 +894,7 @@ MonoBehaviour:
   iceCreamLure: {fileID: 0}
   rainbowLure: {fileID: 0}
   lureButton: {fileID: 1886262830}
---- !u!114 &481971227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481971221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b28e20b94b0166343b8104495e72999d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wooden: {fileID: 735704697}
-  golden: {fileID: 55872797}
-  red: {fileID: 800627493}
-  money: 0
-  popupText: {fileID: 1499846159}
-  popupDuration: 2
+  broke: {fileID: 1660283464}
 --- !u!1 &488723614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +1849,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2662,7 +2645,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2008685166}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3115,8 +3098,7 @@ RectTransform:
   m_Children:
   - {fileID: 1598280333}
   - {fileID: 673127376}
-  - {fileID: 643777092}
-  - {fileID: 2008685166}
+  - {fileID: 1660283465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3693,3 +3675,4 @@ SceneRoots:
   - {fileID: 1710392871}
   - {fileID: 481971223}
   - {fileID: 1626120475}
+  - {fileID: 1499846161}
