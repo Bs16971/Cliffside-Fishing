@@ -13,6 +13,7 @@ public class CastingFishingRod : MonoBehaviour
     private float _coolDownITme;
     private float _nextFireTime;
     public static int noOfClicks = 0;
+
     private float lastClickedTime = 0;
 
     public Transform lureTransform;

@@ -53,6 +53,8 @@ public class ShopItems : MonoBehaviour
         golden.SetActive(false);
         canvasChange.SetActive(true);
     }
+    
+    
 }
 
    

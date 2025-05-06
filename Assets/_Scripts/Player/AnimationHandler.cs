@@ -15,11 +15,12 @@ public class AnimationHandler : MonoBehaviour
 
     public void UpdateAnimatorValues(float x, float y)
     {
-        _anim.SetFloat("x",x, .1f, Time.deltaTime);
+        _anim.SetFloat("x",x,.1f,Time.deltaTime);
         _anim.SetFloat("y", y, .1f, Time.deltaTime);
+        
+        
     }
 
-    
     public void HandleCast(bool cast)
     {
         _anim.applyRootMotion = cast;
@@ -32,8 +33,6 @@ public class AnimationHandler : MonoBehaviour
 
         _anim.SetBool("cast", cast);
     }
-
-    
     
 }
 
