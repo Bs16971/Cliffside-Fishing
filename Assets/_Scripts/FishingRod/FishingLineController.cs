@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class FishingLineController : MonoBehaviour
@@ -11,6 +12,7 @@ public class FishingLineController : MonoBehaviour
      public  GameObject endOfFishingrRod;
 
     private LineRenderer _lineRenderer;
+    private InputManager _input;
 
     public List<Vector3> allRopeSections = new List<Vector3>();
 
@@ -25,6 +27,8 @@ public class FishingLineController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _input = InputManager.instance;
+        
         _springJoint = whatTheRopeIsConnectedTo.GetComponent<SpringJoint>();
 
         _lineRenderer = GetComponent<LineRenderer>();
@@ -40,13 +44,7 @@ public class FishingLineController : MonoBehaviour
         UpdateWinch();
 
         DisplayRope();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(WaitAndDoSomething());
-           
-        }
-        
-        
+        _input.Cast.performed += context => StartCoroutine(WaitAndDoSomething());
     }
 
     private void UpdateSpring()
@@ -118,8 +116,7 @@ public class FishingLineController : MonoBehaviour
     
         IEnumerator WaitAndDoSomething()
         {
-        
-            yield return new WaitForSeconds(1.4f); // Waits for 1 second
+            yield return new WaitForSeconds(1.4f); 
             _maxRopeLength = 100;
         }
     

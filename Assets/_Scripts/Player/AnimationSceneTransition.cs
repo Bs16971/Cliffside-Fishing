@@ -6,32 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class AnimationSceneTransition : MonoBehaviour
 {
-    public Animator animator; // Assign via Inspector or GetComponent
-    public string animationName; // The name of the animation clip
+    public Animator animator; 
+    public string Cast; 
     public string nextSceneName;
 
+    private InputManager _input;
+    
     void Start()
     {
+        _input = InputManager.instance;
         
+        // _input.Cast.performed += context => StartCoroutine(WaitHalfwayThenLoadScene());
     }
 
-    private void Update()
+    public void ChangeScene()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(WaitHalfwayThenLoadScene());
-        }
+        SceneManager.LoadSceneAsync(nextSceneName);
     }
+    
 
     IEnumerator WaitHalfwayThenLoadScene()
     {
-        // Get the AnimationClip duration
         AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
         float clipLength = 0f;
 
         foreach (AnimationClip clip in clips)
         {
-            if (clip.name == animationName)
+            if (clip.name == Cast)
             {
                 clipLength = clip.length;
                 break;
@@ -40,16 +41,13 @@ public class AnimationSceneTransition : MonoBehaviour
 
         if (clipLength > 0f)
         {
-            yield return new WaitForSeconds(clipLength / 2f); // Wait halfway
-            SceneManager.LoadScene(nextSceneName);
+            yield return new WaitForSeconds(clipLength / 2f);
+            // Wait halfway
+            SceneManager.LoadSceneAsync(nextSceneName);
         }
         else
         {
             Debug.LogWarning("Animation clip not found or length is zero.");
         }
-        
-        
     }
-
-   
 }

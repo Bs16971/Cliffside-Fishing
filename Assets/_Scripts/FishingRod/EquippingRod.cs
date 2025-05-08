@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,14 @@ public class EquippingRod : MonoBehaviour
     public GameObject Slot3;
 
     public GameObject Slot4;
-    // Start is called before the first frame update
-    void Start()
+
+    private InputManager _input;
+
+    private void Start()
     {
-        
+
+        _input = InputManager.instance;
+
     }
 
     // Update is called once per frame
