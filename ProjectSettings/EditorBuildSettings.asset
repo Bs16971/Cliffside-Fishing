@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/CaughtScene.unity
     guid: a0ef84ef53d7d6346a79f38a1004d501
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 729bfcef0a133fc4da3dfffc75eab63d, type: 2}
