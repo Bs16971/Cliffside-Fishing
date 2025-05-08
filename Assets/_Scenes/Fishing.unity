@@ -1224,7 +1224,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0.0038776821, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.22073603, y: 1.657434, z: -5.1913514}
+  m_ConnectedAnchor: {x: -0.720736, y: 1.1921121, z: -5.6913514}
   serializedVersion: 2
   m_Spring: 10
   m_Damper: 0.2
@@ -1449,7 +1449,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0.0040880963, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.22073603, y: 1.661642, z: -4.46835}
+  m_ConnectedAnchor: {x: -0.720736, y: 1.1710716, z: -5.7723517}
   serializedVersion: 2
   m_Spring: 10
   m_Damper: 0.2
@@ -1997,19 +1997,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b890e07f1c19338429303e6adf4e55ee, type: 3}
       propertyPath: m_LocalScale.z
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b890e07f1c19338429303e6adf4e55ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3823983
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b890e07f1c19338429303e6adf4e55ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07099957
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b890e07f1c19338429303e6adf4e55ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.29240304
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b890e07f1c19338429303e6adf4e55ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2235,19 +2235,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c83a92b2e8a4fc641a54f7002d1b7563, type: 3}
       propertyPath: m_LocalScale.z
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c83a92b2e8a4fc641a54f7002d1b7563, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35360894
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c83a92b2e8a4fc641a54f7002d1b7563, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07099948
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c83a92b2e8a4fc641a54f7002d1b7563, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.10856506
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c83a92b2e8a4fc641a54f7002d1b7563, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2404,7 +2404,6 @@ GameObject:
   - component: {fileID: 1418062606}
   - component: {fileID: 1418062605}
   - component: {fileID: 1418062607}
-  - component: {fileID: 1418062608}
   - component: {fileID: 1418062603}
   - component: {fileID: 1418062610}
   m_Layer: 0
@@ -2495,7 +2494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lureTransform: {fileID: 835509333}
-  RodTipTransform: {fileID: 0}
+  RodTipTransform: {fileID: 542165314}
   castForce: 100
 --- !u!1 &1461451459
 GameObject:
@@ -3546,7 +3545,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0.0035653575, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1.7207363, y: 1.2233452, z: -6.968351}
+  m_ConnectedAnchor: {x: -0.72073627, y: 1.223345, z: -4.9683504}
   serializedVersion: 2
   m_Spring: 10
   m_Damper: 0.2
@@ -3643,19 +3642,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bb561ba25764eb4491875cdbfd98c70, type: 3}
       propertyPath: m_LocalScale.z
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bb561ba25764eb4491875cdbfd98c70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35650948
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bb561ba25764eb4491875cdbfd98c70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07099985
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bb561ba25764eb4491875cdbfd98c70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.06816902
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bb561ba25764eb4491875cdbfd98c70, type: 3}
       propertyPath: m_LocalRotation.w

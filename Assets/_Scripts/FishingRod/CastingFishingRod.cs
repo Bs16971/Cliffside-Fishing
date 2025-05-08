@@ -29,6 +29,7 @@ public class CastingFishingRod : MonoBehaviour
         _input = InputManager.instance;
 
         _input.Cast.performed += _ => OnCastPerformed();
+        _input.Cast.canceled += _ => OnCastCanceled();
     }
 
     // Update is called once per frame
@@ -39,11 +40,18 @@ public class CastingFishingRod : MonoBehaviour
 
     private void OnCastPerformed()
     {
+       
+        
         if (Time.time - lastClickedTime >= _coolDownITme)
         {
             lastClickedTime = Time.time;
             CastLure();
         }
+    }
+
+    private void OnCastCanceled()
+    {
+        _anim.SetBool("Cast", false);
     }
 
     void CastLure()
@@ -61,7 +69,7 @@ public class CastingFishingRod : MonoBehaviour
             rb.AddForce(transform.forward * castForce, ForceMode.Impulse);
         }
 
-        _anim.SetTrigger("Cast");
+        _anim.SetBool("Cast", true);
     }
 
 }
